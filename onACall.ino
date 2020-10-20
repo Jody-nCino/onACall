@@ -3,8 +3,6 @@
 #include <Adafruit_GFX.h>
 #include <Max72xxPanel.h>
 
-#define BUZZER_PIN  D2
-
 String marqueeMessage = "";
 // Display Settings
 // CLK -> D5 (SCK)
@@ -98,7 +96,6 @@ void loop() {
 
 void home() {
 	server.send(200, "text/plain", "Velcro is such a rip off");
-	Serial.println();
 	centerPrint("howdy");
 	delay(5000);
 }
@@ -115,39 +112,39 @@ void offACall() {
 	marqueeMessage = "";
 }
 
-
 void centerPrint(String msg) {
-  int x = (matrix.width() - (msg.length() * width)) / 2;
+	matrix.fillScreen(LOW); // clear previous text
+	int x = (matrix.width() - (msg.length() * width)) / 2;
 
-  matrix.setCursor(0, 0);
-  matrix.print(msg);
+	matrix.setCursor(0, 0);
+	matrix.print(msg);
 
-  matrix.write();
+	matrix.write();
 }
 
 void scrollMessage(String msg) {
-  msg += " "; // add a space at the end
-  for ( int i = 0 ; i < width * msg.length() + matrix.width() - 1 - spacer; i++ ) {
+	msg += " "; // add a space at the end
+	for ( int i = 0 ; i < width * msg.length() + matrix.width() - 1 - spacer; i++ ) {
 
-    if (refresh == 1) i = 0;
-    refresh = 0;
-    matrix.fillScreen(LOW);
+	if (refresh == 1) i = 0;
+	refresh = 0;
+	matrix.fillScreen(LOW);
 
-    int letter = i / width;
-    int x = (matrix.width() - 1) - i % width;
-    int y = (matrix.height() - 8) / 2; // center the text vertically
+	int letter = i / width;
+	int x = (matrix.width() - 1) - i % width;
+	int y = (matrix.height() - 8) / 2; // center the text vertically
 
-    while ( x + width - spacer >= 0 && letter >= 0 ) {
-      if ( letter < msg.length() ) {
-        matrix.drawChar(x, y, msg[letter], HIGH, LOW, 1);
-      }
+	while ( x + width - spacer >= 0 && letter >= 0 ) {
+		if ( letter < msg.length() ) {
+		matrix.drawChar(x, y, msg[letter], HIGH, LOW, 1);
+		}
 
-      letter--;
-      x -= width;
-    }
+		letter--;
+		x -= width;
+	}
 
-    matrix.write(); // Send bitmap to display
-    delay(displayScrollSpeed);
-  }
-  matrix.setCursor(0, 0);
+	matrix.write(); // Send bitmap to display
+	delay(displayScrollSpeed);
+	}
+	matrix.setCursor(0, 0);
 }

@@ -9,7 +9,7 @@
 	- https://www.thingiverse.com/thing:2867294
 
 ## Setup
-1. Upload onACall.ino file onto ESp board
+1. Upload onACall.ino file onto ESP board
 2. Connect ESP board to LED Matrix
 	- Wire Config:
 		- VCC -> 5v
