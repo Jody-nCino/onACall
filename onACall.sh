@@ -1,7 +1,7 @@
 #!/bin/bash
 ON_A_CALL=0
 SLEEP_TIME=15
-ESP_IP="192.168.86.78" // The IP Address of your esp board (should display on LED matrix on start up)
+ESP_IP="insertIPAddressHere" # The IP Address of your esp board (should display on LED matrix on start up)
 PROGRAM="BlueJeans|zoom.us"
 
 echo "starting up..."

@@ -97,8 +97,9 @@ void loop() {
 }
 
 void home() {
-	server.send(200, "text/plain", "hello world!");
-	centerPrint("oh hi!");
+	server.send(200, "text/plain", "Velcro is such a rip off");
+	Serial.println();
+	centerPrint("howdy");
 	delay(5000);
 }
 
