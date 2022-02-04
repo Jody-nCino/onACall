@@ -1,6 +1,6 @@
 # onACall
 
-![](onACall.gif)
+![](arduino/onACall.gif)
 
 ## Hardware
 - WeMos D1 ESP8266 arduino board
